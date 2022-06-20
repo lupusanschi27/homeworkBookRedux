@@ -28,7 +28,7 @@ const List = ({ authorToggle, setAuthorToggle, setModifyId, setModifyTitle }) =>
   const [pressedItemId, setPressedItemId] = useState('');
   const [title, setTitle] = useState('');
   const [modalToggle, setModalToggle] = useState(false);
-  const [isArticleListEmpty, setArticleList] = useState(false);
+  // const [isArticleListEmpty, setArticleList] = useState(false);
 
   //Redux function
   const articles = useSelector((state) => state.articles);
@@ -43,9 +43,9 @@ const List = ({ authorToggle, setAuthorToggle, setModifyId, setModifyTitle }) =>
   }, []);
 
   //useEffect for watching 'state.articles'
-  useEffect(() => {
-    articles.length === 0 ? setArticleList(true) : setArticleList(false)    
-  },[articles])
+  // useEffect(() => {
+  //   articles.length === 0 ? setArticleList(true) : setArticleList(false)    
+  // },[articles])
 
   const idAndTitleHandler = (article) => {
     setPressedItemId(article.id);
@@ -64,7 +64,7 @@ const List = ({ authorToggle, setAuthorToggle, setModifyId, setModifyTitle }) =>
   };
   
   //Conditional rendering based on the articles selector length
-  if(isArticleListEmpty){
+  if(articles.length === 0){
     return (
       <p className='px-2 pt-2 pb-0 border-top'><i>You haven't added any articles yet.</i></p>
     )
